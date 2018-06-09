@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
-  resources :users, only: %i[index show edit update destroy]
+  resources :users, only: %i[show edit update destroy]
   resources :items
 
   get '/signup', to: 'users#new'

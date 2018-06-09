@@ -1,0 +1,30 @@
+.mt-5
+  .row
+    .col-md-6.offset-md-3.bg-light.p-5
+      h3 ユーザーを編集
+      = form_for(@user, url: user_path) do |f|
+        = render 'shared/error_messages', object: f.object
+        .row
+          .col-md-4
+            .image-form
+              = image_tag 'item_picture.png', {alt: "profile_image", class: "w-100 rounded"}
+              / = f.label :image, "画像を変更",class: "btn btn-light btn-sm btn-block"
+              / = f.file_field :image, onchange: "previewFile()", hidden: true
+          .col-md-8
+            .name-form
+              = f.label "名前"
+              span.badge.badge-danger 必須
+              = f.text_field :name, class: 'form-control', required: true, placeholder: @user.name
+            .gender-form.mt-3.btn-group.btn-group-toggle data-toggle="buttons"
+              label.btn.btn-sm.btn-outline-success.rounded-0
+                = f.radio_button :sex, 0
+                = fa_icon "male"
+              label.btn.btn-sm.btn-outline-success.rounded-0
+                = f.radio_button :sex, 1
+                = fa_icon "female"
+            .age-form.mt-2
+              = f.label "年齢"
+              = f.text_field :age, class: 'form-control', placeholder: @user.age
+        .submit-link
+          .text-center.mt-3
+            = f.submit "変更を保存", class: "btn btn-success btn-block rounded-0"
