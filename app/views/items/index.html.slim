@@ -1,0 +1,10 @@
+.container
+  .row
+    .card.text-black.bg-light
+      .card-header
+        h3.card-title
+          = fa_icon "compass"
+          商品一覧
+      .card-body.bg-white
+        ul.list-unstyled
+          = render :partial => "items/item", :collection => @items
