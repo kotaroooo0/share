@@ -2,12 +2,12 @@
 #
 # Table name: items
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  price      :integer          not null
-#  picture    :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string           not null
+#  picture     :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  discription :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

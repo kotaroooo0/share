@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608155108) do
+ActiveRecord::Schema.define(version: 20180609055710) do
 
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", null: false
     t.string "picture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "discription"
   end
 
   create_table "user_items", force: :cascade do |t|
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180608155108) do
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
+    t.string "condition"
     t.index ["item_id"], name: "index_user_items_on_item_id"
     t.index ["user_id"], name: "index_user_items_on_user_id"
   end
