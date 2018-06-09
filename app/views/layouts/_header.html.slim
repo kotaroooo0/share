@@ -1,19 +1,19 @@
-nav.navbar.navbar-expand-lg.navbar-dark.mb-3.bg-info
+nav.navbar.navbar-expand-lg.navbar-dark.mb-3.bg-success
   = link_to "share", root_path, class: "navbar-brand"
   button.navbar-toggler aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替" data-target="#Navber" data-toggle="collapse" type="button"
     span.navbar-toggler-icon
-  #Navber.collapse.navbar-collapse
-    ul.navbar-nav.mr-auto
-      li class=("nav-item #{'active' if (controller.controller_name + controller.action_name) == 'itemsindex'}")
-        = link_to "ホーム", root_path, class: "nav-link"
-      - if logged_in?
-        li class=("nav-item dropdown #{'active' if controller.controller_name == 'users'}")
-          a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" アカウント
-          .dropdown-menu aria-labelledby="navbarDropdown"
-            = link_to "プロフール詳細",current_user, class: "dropdown-item"
-            = link_to "プロフィール編集",edit_user_path(current_user), class: "dropdown-item"
-            .dropdown-divider
-            = link_to "ログアウト",logout_path, class: "dropdown-item"
-      - else
-        li.nav-item.if class=("<%= 'active' (controller.controller_name + controller.action_name) == 'sessionsnew' %>")
-          = link_to "ログイン",login_path, class: "nav-link"
+  / #Navber.collapse.navbar-collapse
+  /   ul.navbar-nav.mr-auto
+  /     li class=("nav-item #{'active' if (controller.controller_name + controller.action_name) == 'itemsindex'}")
+  /       = link_to "ホーム", root_path, class: "nav-link"
+  /     - if logged_in?
+  /       li class=("nav-item dropdown #{'active' if controller.controller_name == 'users'}")
+  /         a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" アカウント
+  /         .dropdown-menu aria-labelledby="navbarDropdown"
+  /           = link_to "プロフール詳細",current_user, class: "dropdown-item"
+  /           = link_to "プロフィール編集",edit_user_path(current_user), class: "dropdown-item"
+  /           .dropdown-divider
+  /           = link_to "ログアウト",logout_path, class: "dropdown-item"
+  /     - else
+  /       li.nav-item.if class=("<%= 'active' (controller.controller_name + controller.action_name) == 'sessionsnew' %>")
+  /         = link_to "ログイン",login_path, class: "nav-link"
