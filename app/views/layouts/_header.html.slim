@@ -17,3 +17,5 @@ nav.navbar.navbar-expand-lg.navbar-dark.mb-3.bg-success
       - else
         li.nav-item.if class=("<%= 'active' (controller.controller_name + controller.action_name) == 'sessionsnew' %>")
           = link_to "ログイン",login_path, class: "nav-link"
+        li.nav-item.if class=("<%= 'active' (controller.controller_name + controller.action_name) == 'usersnew' %>")
+          = link_to "サインアップ",signup_path, class: "nav-link"

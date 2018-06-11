@@ -1,0 +1,18 @@
+.mt-5
+  .row
+    .col-md-6.offset-md-3.bg-light.p-5
+      h3 ログイン
+      = form_for(:session, url: login_url) do |f|
+        .row
+          .col-md-12
+            .email-form
+              = f.label "メールアドレス"
+              span.badge.badge-danger 必須
+              = f.email_field :email, class: 'form-control', required: true
+            .password-form
+              = f.label "パスワード"
+              span.badge.badge-danger 必須
+              = f.password_field :password, class: 'form-control', required: true
+        .submit-link
+          .text-center.mt-3
+            = f.submit "ログイン", class: "btn btn-success btn-block rounded-0"
