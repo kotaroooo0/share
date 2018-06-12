@@ -7,25 +7,30 @@
         .row
           .col-md-4
             .image-form
+              / TODO: 画像を選択できるようにする
               = image_tag 'user_picture.png', {alt: "profile_image", class: "w-100 rounded"}
               / = f.label :image, "画像を変更",class: "btn btn-light btn-sm btn-block"
               / = f.file_field :image, onchange: "previewFile()", hidden: true
+              = f.hidden_field :picture, value: 'user_picture.png'
           .col-md-8
             .name-form
               = f.label "名前"
               span.badge.badge-danger 必須
               = f.text_field :name, class: 'form-control', required: true, placeholder: @user.name
-            .gender-form.mt-3.btn-group.btn-group-toggle data-toggle="buttons"
-              label.btn.btn-sm.btn-outline-success.rounded-0
-                = f.radio_button :sex, 0
-                = fa_icon "male"
-              label.btn.btn-sm.btn-outline-success.rounded-0
-                = f.radio_button :sex, 1
-                = fa_icon "female"
             .age-form.mt-2
               = f.label "年齢"
               span.badge.badge-danger 必須
-              = f.text_field :age, class: 'form-control', placeholder: @user.age
+            .row
+              .col-md-8
+                  = f.text_field :age, class: 'form-control', placeholder: @user.age
+              .col-md-4
+                .sex-form.mt-3
+                  label
+                    = f.radio_button :sex, 0
+                    = fa_icon "male", class: "fa-lg"
+                  label
+                    = f.radio_button :sex, 1
+                    = fa_icon "female", class: "fa-lg"
             .email-form
               = f.label "メールアドレス"
               span.badge.badge-danger 必須

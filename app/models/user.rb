@@ -17,4 +17,14 @@ class User < ApplicationRecord
 
   has_many :items, through: :user_items
   has_many :user_items
+
+  # enum sex: { male: 0, female: 1 }
+
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :age, presence: true
+  validates :sex, presence: true
+  validates :email, presence: true, length: { maximum: 255 }
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :picture, presence: true
 end
