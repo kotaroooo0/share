@@ -22,6 +22,7 @@ gem 'will_paginate'
 
 # front
 gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 
