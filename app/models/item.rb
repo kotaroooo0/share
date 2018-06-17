@@ -12,8 +12,8 @@
 
 class Item < ApplicationRecord
 
+  has_many :user_items, dependent: :destroy
   has_many :users, through: :user_items
-  has_many :user_items
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :picture, presence: true
