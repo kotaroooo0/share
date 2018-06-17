@@ -1,6 +1,7 @@
 module ApplicationHelper
 
   include SessionsHelper
+  include ItemsHelper
 
   def logged_in_user?
     return if logged_in?

@@ -6,3 +6,5 @@
     span.card-text
       = @user.age
       = @user.sex
+h5.mt-5 出品一覧
+= render :partial => "users/exhibit", :collection => @exhibits

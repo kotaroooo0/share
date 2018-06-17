@@ -5,3 +5,5 @@ m.card
     = @item.name
   span.card-text
     = @item.discription
+h5.mt-5 出品者一覧
+= render :partial => "items/exhibit", :collection => @exhibits

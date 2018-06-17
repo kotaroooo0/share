@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @users = @item.users
+    @exhibits = UserItem.where(item_id: params[:id]).includes(:user)
   end
 
   def new

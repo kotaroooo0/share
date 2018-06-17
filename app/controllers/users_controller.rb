@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items.paginate(page: params[:page])
+    @exhibits = UserItem.where(user_id: params[:id])
   end
 
   def new
