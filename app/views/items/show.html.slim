@@ -1,9 +1,10 @@
-m.card
-= image_tag @item.picture, class: 'card-img-top'
-.card-body
-  h5.card-title
-    = @item.name
-  span.card-text
-    = @item.discription
-h5.mt-5 出品者一覧
-= render :partial => "items/exhibit", :collection => @exhibits
+.col-md-4.offset-4
+  .card
+    = image_tag @item.picture, class: 'card-img-top'
+    .card-body
+      h5.card-title
+        = @item.name
+      span.card-text
+        = @item.discription
+  h5.mt-5 出品者一覧
+  = render :partial => "items/exhibit", :collection => @exhibits
