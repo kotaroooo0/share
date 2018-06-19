@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
     @items = Item.paginate(page: params[:page])
   end
 
+  def search
+    @items = Item.where(['name LIKE ?', "%#{params[:query]}%"]).paginate(page: params[:page])
+  end
+
   def show
     @item = Item.find(params[:id])
     @exhibits = UserItem.where(item_id: params[:id]).includes(:user)
