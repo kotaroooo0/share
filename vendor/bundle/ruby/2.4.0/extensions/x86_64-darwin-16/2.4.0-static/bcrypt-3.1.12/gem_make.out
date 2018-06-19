@@ -1,0 +1,19 @@
+current directory: /Users/kotaro/Documents/share/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+/Users/kotaro/.rbenv/versions/2.4.2/bin/ruby -r ./siteconf20180619-29610-wmakxc.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kotaro/Documents/share/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" clean
+
+current directory: /Users/kotaro/Documents/share/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.bundle
+
+current directory: /Users/kotaro/Documents/share/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20180619-29610-19j8is5
