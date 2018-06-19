@@ -25,7 +25,7 @@
         .exhibit-form
           = form_for UserItem.new, url: user_items_path do |f|
             = f.hidden_field :item_id, :value => @item.id
-            = f.hidden_field :user_id, :value => current_user.id
+            = f.hidden_field :user_id, :value => session[:user_id]
             = render 'shared/error_messages', object: f.object
             .price-form
               = f.label "価格(円)"
