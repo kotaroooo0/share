@@ -9,6 +9,30 @@
         p
           = link_to (fa_icon "edit"), edit_item_url(@item), class: "text-dark pl-1"
           = link_to (fa_icon "trash"), @item, method: :delete, data: { confirm: "本当に削除しますか?" }, class: "text-dark pl-1"
-
+  - if logged_in?
+    a.mt-4.text-dark data-target=("#modal-#{@item.id}") data-toggle="modal" href="#" = fa_icon "align-right", text: "この商品を出品する"
   h5.mt-5 出品者一覧
   = render :partial => "items/exhibit", :collection => @exhibits
+
+.modal.fade aria-labelledby="myModalLabel" id=("modal-#{@item.id}") role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title #{@item.name}を出品する
+        button.close aria-label="閉じる" data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+      .modal-body
+        .exhibit-form
+          = form_for UserItem.new, url: user_items_path do |f|
+            = f.hidden_field :item_id, :value => @item.id
+            = f.hidden_field :user_id, :value => current_user.id
+            = render 'shared/error_messages', object: f.object
+            .price-form
+              = f.label "価格(円)"
+              = f.text_field :price, class: 'form-control', required: true
+            .condition-form.mt-2
+              = f.label "状態を入力"
+              = f.text_area :condition, class: 'form-control', required: true
+            .modal-footer
+              = f.submit "出品", class: "btn btn-success"
+              button.btn.btn-outline-success data-dismiss="modal" type="button"  閉じる
