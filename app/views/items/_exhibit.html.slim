@@ -5,3 +5,4 @@
       | 円 出品者:
       -  user = User.find(exhibit.user_id)
       = link_to user.name, user
+      p 状態: #{exhibit.condition}
