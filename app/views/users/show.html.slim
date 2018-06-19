@@ -1,10 +1,17 @@
-.card
-  = image_tag @user.picture, class: 'card-img-top'
-  .card-body
-    h5.card-title
-      = @user.name
-    span.card-text
-      = @user.age
-      = @user.sex
-h5.mt-5 出品一覧 全#{@exhibits.length}件
-= render :partial => "users/exhibit", :collection => @exhibits
+.col-md-4.offset-4
+  .card
+    = image_tag @user.picture, class: 'card-img-top'
+    .card-body
+      h5.card-title
+        | 名前:
+        = @user.name
+      span.card-text
+        | 年齢:
+        = @user.age
+        | 性別:
+        - if @user.sex == 0
+          | 男性
+        - else
+          | 女性
+  h5.mt-5 出品一覧 全#{@exhibits.length}件
+  = render :partial => "users/exhibit", :collection => @exhibits

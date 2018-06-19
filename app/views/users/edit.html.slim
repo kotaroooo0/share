@@ -26,6 +26,14 @@
               = f.label "年齢"
               span.badge.badge-danger 必須
               = f.text_field :age, class: 'form-control', placeholder: @user.age
+            .password-form
+              = f.label "パスワード"
+              span.badge.badge-danger 必須
+              = f.password_field :password, class: 'form-control', required: true
+            .password-confirmation-form
+              = f.label "パスワード再入力"
+              span.badge.badge-danger 必須
+              = f.password_field :password_confirmation, class: 'form-control', required: true
         .submit-link
           .text-center.mt-3
             = f.submit "変更を保存", class: "btn btn-success btn-block rounded-0"
