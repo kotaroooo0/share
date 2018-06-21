@@ -3,6 +3,5 @@
     p.card-text
       = exhibit.price
       | 円 商品名:
-      -  item = Item.find(exhibit.item_id)
-      = link_to item.name, item
+      = link_to exhibit.item.name, exhibit.item
       p 状態: #{exhibit.condition}
