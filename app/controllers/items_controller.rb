@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @exhibits = UserItem.where(item_id: params[:id]).includes(:user)
+    @exhibits = UserItem.where(item_id: params[:id]).order(:price).includes(:user)
   end
 
   def new
