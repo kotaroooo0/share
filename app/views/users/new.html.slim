@@ -24,13 +24,13 @@
               .col-md-8
                   = f.text_field :age, class: 'form-control', placeholder: @user.age
               .col-md-4
-                .sex-form.mt-3
-                  label
+                .gender-form.mt-1.btn-group.btn-group-toggle data-toggle="buttons"
+                  label.btn.btn-sm.btn-outline-success.rounded-0
                     = f.radio_button :sex, 0
-                    = fa_icon "male", class: "fa-lg"
-                  label
+                    = fa_icon "male"
+                  label.btn.btn-sm.btn-outline-success.rounded-0
                     = f.radio_button :sex, 1
-                    = fa_icon "female", class: "fa-lg"
+                    = fa_icon "female"
             .email-form
               = f.label "メールアドレス"
               span.badge.badge-danger 必須
