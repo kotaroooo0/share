@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.paginate(page: params[:page])
+    @items = Item.paginate(page: params[:page]).order('created_at DESC')
   end
 
   def search
-    @items = Item.where(['name LIKE ?', "%#{params[:query]}%"]).paginate(page: params[:page])
+    @items = Item.where(['name LIKE ?', "%#{params[:query]}%"]).order('created_at DESC').paginate(page: params[:page])
   end
 
   def show
