@@ -6,14 +6,14 @@ module ApplicationHelper
   def logged_in_user?
     return if logged_in?
     store_location
-    flash[:info] = "ログインしてください"
+    flash[:success] = "ログインしてください"
     redirect_to login_url
   end
 
   def correct_user?
     return if current_user.id == session[:user_id]
     store_location
-    flash[:info] = "正しいユーザーではありません"
+    flash[:success] = "正しいユーザーではありません"
     redirect_to root_url
   end
 

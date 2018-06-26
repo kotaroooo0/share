@@ -9,6 +9,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.mb-3.bg-success
       li class=("nav-item #{'active' if (controller.controller_name + controller.action_name) == 'itemssearch'}")
         = link_to "商品検索", search_path, class: "nav-link"
       - if logged_in?
+        li class=("nav-item #{'active' if (controller.controller_name + controller.action_name) == 'itemsnew'}")
+          = link_to "商品追加", new_item_path, class: "nav-link"
         li class=("nav-item dropdown #{'active' if controller.controller_name == 'users'}")
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" アカウント
           .dropdown-menu aria-labelledby="navbarDropdown"

@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  before_action :logged_in_user?, only: %i[new create edit update]
+
   def index
     @items = Item.paginate(page: params[:page]).order('created_at DESC')
   end

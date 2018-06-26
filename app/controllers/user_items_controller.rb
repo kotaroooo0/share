@@ -1,5 +1,7 @@
 class UserItemsController < ApplicationController
 
+  before_action :logged_in_user?, only: %i[create]
+
   def create
     @item = Item.find(params[:user_item][:item_id])
     @exhibit = UserItem.new(user_item_params)
