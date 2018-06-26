@@ -1,0 +1,8 @@
+.card
+  .card-body
+    p.card-text
+      = exhibit.price
+      | 円 出品者:
+      = link_to exhibit.user.name, exhibit.user
+      p 状態: #{exhibit.condition}
+      p #{time_ago_in_words(exhibit.created_at)}前

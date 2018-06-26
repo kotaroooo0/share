@@ -14,5 +14,11 @@ module Share
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    #日本時間に設定
+    config.time_zone = 'Tokyo'
+
+    # 日本語設定
+    config.i18n.default_locale = :ja
   end
 end

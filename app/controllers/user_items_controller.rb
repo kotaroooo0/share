@@ -2,6 +2,11 @@ class UserItemsController < ApplicationController
 
   before_action :logged_in_user?, only: %i[create]
 
+  def index
+    @exhibits = UserItem.order('created_at DESC').limit(9)
+
+  end
+
   def create
     @item = Item.find(params[:user_item][:item_id])
     @exhibit = UserItem.new(user_item_params)
