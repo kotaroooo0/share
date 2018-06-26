@@ -23,4 +23,5 @@
               = f.text_area :discription, class: 'form-control', required: true
         .submit-link
           .text-center.mt-3
+            = f.hidden_field :picture, value: 'item_picture.png'
             = f.submit "商品を追加", class: "btn btn-success btn-block rounded-0"
