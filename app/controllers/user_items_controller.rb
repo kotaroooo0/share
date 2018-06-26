@@ -3,7 +3,7 @@ class UserItemsController < ApplicationController
   before_action :logged_in_user?, only: %i[create]
 
   def index
-    @exhibits = UserItem.order('created_at DESC').limit(9)
+    @exhibits = UserItem.order('created_at DESC').limit(9).includes(:user).includes(:item)
 
   end
 

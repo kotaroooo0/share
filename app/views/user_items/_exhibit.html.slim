@@ -2,7 +2,11 @@
   .card-body
     p.card-text
       = exhibit.price
-      | 円 出品者:
+      | 円
+      p.mb-0 商品
+      = link_to exhibit.item.name, exhibit.item
+      p.mb-0 出品者
       = link_to exhibit.user.name, exhibit.user
-      p 状態: #{exhibit.condition}
-      p #{time_ago_in_words(exhibit.created_at)}前
+      p.mb-0 状態
+      | #{exhibit.condition}
+      p.mt-3 #{time_ago_in_words(exhibit.created_at)}
