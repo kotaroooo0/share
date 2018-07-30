@@ -1,5 +1,5 @@
 current directory: /Users/kotaro/Documents/share/vendor/bundle/ruby/2.4.0/gems/mysql2-0.5.2/ext/mysql2
-/Users/kotaro/.rbenv/versions/2.4.2/bin/ruby -r ./siteconf20180730-55414-50ppnz.rb extconf.rb
+/Users/kotaro/.rbenv/versions/2.4.2/bin/ruby -r ./siteconf20180731-18941-hww03b.rb extconf.rb
 checking for rb_absint_size()... yes
 checking for rb_absint_singlebit_p()... yes
 checking for rb_wait_for_single_fd()... yes
@@ -21,9 +21,9 @@ checking for SERVER_QUERY_NO_INDEX_USED in mysql.h... yes
 checking for SERVER_QUERY_WAS_SLOW in mysql.h... yes
 checking for MYSQL_OPTION_MULTI_STATEMENTS_ON in mysql.h... yes
 checking for MYSQL_OPTION_MULTI_STATEMENTS_OFF in mysql.h... yes
-checking for my_bool in mysql.h... yes
+checking for my_bool in mysql.h... no
 -----
-Setting rpath to /usr/local/Cellar/mysql/5.7.21/lib
+Setting rpath to /usr/local/Cellar/mysql/8.0.12/lib
 -----
 creating Makefile
 
@@ -41,4 +41,4 @@ linking shared-object mysql2/mysql2.bundle
 
 current directory: /Users/kotaro/Documents/share/vendor/bundle/ruby/2.4.0/gems/mysql2-0.5.2/ext/mysql2
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 mysql2.bundle ./.gem.20180730-55414-psiems/mysql2
+/usr/bin/install -c -m 0755 mysql2.bundle ./.gem.20180731-18941-jxzgfj/mysql2
