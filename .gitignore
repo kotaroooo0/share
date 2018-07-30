@@ -21,3 +21,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# 環境変数を設定
+/.env
