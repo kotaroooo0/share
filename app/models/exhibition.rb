@@ -9,9 +9,12 @@
 #  lecture     :string(255)      not null
 #  condition   :string(255)      not null
 #  discription :string(255)      not null
+#  sellout     :boolean          default(TRUE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Exhibition < ApplicationRecord
+    belongs_to :user
+    has_one :parchase
 end
