@@ -10,38 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180609055710) do
+ActiveRecord::Schema.define(version: 20180812073756) do
 
-  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", null: false
-    t.string "picture", null: false
+  create_table "bad_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "purchase_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "discription"
   end
 
-  create_table "user_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
+  create_table "exhibitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.string "user_id", null: false
+    t.integer "price", null: false
+    t.string "lecture", null: false
+    t.string "condition", null: false
+    t.string "discription", null: false
+    t.boolean "sellout", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
-    t.string "condition"
-    t.index ["item_id"], name: "index_user_items_on_item_id"
-    t.index ["user_id"], name: "index_user_items_on_user_id"
+  end
+
+  create_table "good_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "purchase_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "normal_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "purchase_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "exhibition_id", null: false
+    t.integer "purchaser_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "universities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
-    t.integer "age", null: false
+    t.string "grade", null: false
+    t.integer "university_id", null: false
     t.integer "sex", null: false
     t.string "email", null: false
+    t.string "image", null: false
+    t.string "introduction", null: false
     t.string "password_digest", null: false
-    t.string "picture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "user_items", "items"
-  add_foreign_key "user_items", "users"
 end

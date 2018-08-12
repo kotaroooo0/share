@@ -1,30 +1,42 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string           not null
-#  age             :integer          not null
+#  id              :bigint(8)        not null, primary key
+#  name            :string(255)      not null
+#  grade           :string(255)      not null
+#  university_id   :integer          not null
 #  sex             :integer          not null
-#  email           :string           not null
-#  password_digest :string           not null
-#  picture         :string           not null
+#  email           :string(255)      not null
+#  image           :string(255)      not null
+#  introduction    :string(255)      not null
+#  password_digest :string(255)      not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class User < ApplicationRecord
+  has_one :university
+  has_many :exhibitions
+  has_many :purchases, class_name: 'Purchase', foreign_key: 'purchaser_id', dependent: :destroy
 
-  has_many :user_items, dependent: :destroy
-  has_many :items, through: :user_items
-
-  # enum sex: { male: 0, female: 1 }
-
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :age, presence: true
+  validates :name, presence: true, length: { maximum: 15 }
+  validates :grade, presence: true, length: { maximum: 10 }
+  validates :university_id, presence: true
   validates :sex, presence: true
-  validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email,
+            presence: true,
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+
+  validates :image, presence: true
+  validates :introduction, presence: true, length: { maximum: 140 }
+
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
-  validates :picture, presence: true
 end
