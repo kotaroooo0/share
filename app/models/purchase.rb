@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: purchases
@@ -10,6 +12,9 @@
 #
 
 class Purchase < ApplicationRecord
-    belongs_to :purchaser, class_name: "User", foreign_key: "purchaser_id"
-    belongs_to :exhibition
+  belongs_to :purchaser, class_name: 'User', foreign_key: 'purchaser_id'
+  belongs_to :exhibition
+
+  validates :exhibition_id, presence: true
+  validates :purchaser_id, presence: true
 end

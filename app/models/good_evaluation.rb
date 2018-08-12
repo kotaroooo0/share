@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: good_evaluations
@@ -9,4 +11,5 @@
 #
 
 class GoodEvaluation < ApplicationRecord
+  validates :purchase_id, presence: true
 end

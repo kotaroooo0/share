@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -18,7 +20,23 @@
 class User < ApplicationRecord
   has_one :university
   has_many :exhibitions
-  has_many :purchases, class_name: "Purchase",
-                       foreign_key: "purchaser_id",
-                       dependent: :destroy
+  has_many :purchases, class_name: 'Purchase', foreign_key: 'purchaser_id', dependent: :destroy
+
+  validates :name, presence: true, length: { maximum: 15 }
+  validates :grade, presence: true, length: { maximum: 10 }
+  validates :university_id, presence: true
+  validates :sex, presence: true
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email,
+            presence: true,
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+
+  validates :image, presence: true
+  validates :introduction, presence: true, length: { maximum: 140 }
+
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
 end

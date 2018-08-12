@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: normal_evaluations
@@ -9,4 +11,5 @@
 #
 
 class NormalEvaluation < ApplicationRecord
+  validates :purchase_id, presence: true
 end

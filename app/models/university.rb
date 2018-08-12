@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: universities
@@ -9,5 +11,7 @@
 #
 
 class University < ApplicationRecord
-    belongs_to :user
+  belongs_to :user
+
+  validates :name, presence: true, length: { maximum: 30 }
 end
