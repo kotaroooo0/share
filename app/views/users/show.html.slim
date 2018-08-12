@@ -6,12 +6,16 @@
         | 名前:
         = @user.name
       span.card-text
-        | 年齢:
-        = @user.age
+        | 大学:
+        = @user.university.name
+        | 回生:
+        = @user.grade
         | 性別:
         - if @user.sex == 0
           | 男性
         - else
           | 女性
-  h5.mt-5 出品一覧 全#{@exhibits.length}件
-  = render :partial => "users/exhibit", :collection => @exhibits
+        | 自己紹介
+        = @user.introduction
+  h5.mt-5 出品一覧 全#{@exhibitions.length}件
+  = render :partial => "users/exhibition", :collection => @exhibitions

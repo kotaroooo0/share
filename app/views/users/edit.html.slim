@@ -15,6 +15,12 @@
               = f.label "名前"
               span.badge.badge-danger 必須
               = f.text_field :name, class: 'form-control', required: true, placeholder: @user.name
+            .university-form.mt-2
+              = f.label '大学'
+              = f.select :university_id, Constants::University.all.map{ |univ| [univ.name, univ.id] }, {prompt: '選択してください'}, class: 'form-control'
+            .grade-form.mt-2
+              = f.label "学年"
+              span.badge.badge-danger 必須
             .gender-form.mt-3.btn-group.btn-group-toggle data-toggle="buttons"
               label.btn.btn-sm.btn-outline-success.rounded-0
                 = f.radio_button :sex, 0
@@ -26,6 +32,10 @@
               = f.label "年齢"
               span.badge.badge-danger 必須
               = f.text_field :age, class: 'form-control', placeholder: @user.age
+            .introduction-form
+              = f.label "自己紹介"
+              span.badge.badge-danger 必須
+              = f.text_area :introduction, class: 'form-control', required: true, placeholder: @user.introduction
             .password-form
               = f.label "パスワード"
               span.badge.badge-danger 必須
