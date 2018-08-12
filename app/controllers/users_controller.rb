@@ -1,11 +1,12 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
+class UsersController < ApplicationController
   before_action :logged_in_user?, only: %i[edit update]
   before_action :correct_user?, only: %i[edit update]
 
   def show
     @user = User.find(params[:id])
-    @exhibits = UserItem.where(user_id: params[:id]).includes(:item)
+    @exhibitions = Exhibition.where(user_id: params[:id])
   end
 
   def new
@@ -40,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :age, :sex, :email, :password, :password_confirmation, :picture)
+    params.require(:user).permit(:name, :grade, :university_id, :sex, :email, :image, :introduction, :password, :password_confirmation)
   end
 end
