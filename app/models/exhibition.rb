@@ -22,9 +22,9 @@ class Exhibition < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
-  validates :price, presence: true, greater_than_or_equal_to: 0
-  validates :lecture, presence: true, length: { maximum: 30 }, default: '指定なし'
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :lecture, presence: true, length: { maximum: 30 }
   validates :condition, presence: true, length: { maximum: 100 }
   validates :discription, presence: true, length: { maximum: 256 }
-  validates :sellout, presence: true, default: false
+  validates :sellout, presence: true
 end
