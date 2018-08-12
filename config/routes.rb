@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   root 'exhibitions#index'
 
   resources :users, only: %i[show edit update destroy]
-  resources :exhibitions, only: %i[index create]
+  resources :exhibitions, only: %i[index show new create edit update destroy]
 
   get '/search',  to: 'exhibitions#search'
+
   get '/signup',  to: 'users#new'
   post '/signup', to: 'users#create'
+
   get   '/login', to: 'sessions#new'
   post  '/login', to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'

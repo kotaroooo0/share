@@ -4,5 +4,5 @@
     = form_tag :search, method: :get, class: "form-inline ml-3"
       = text_field_tag(:query, params[:query], placeholder: "商品名を入力", class: "form-control")
     .card-columns.mt-4
-      = render :partial => "items/item", :collection => @items
+      = render :partial => "exhibitions/exhibition", :collection => @exhibitions
     = will_paginate

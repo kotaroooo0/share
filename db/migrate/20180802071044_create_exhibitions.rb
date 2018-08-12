@@ -7,7 +7,7 @@ class CreateExhibitions < ActiveRecord::Migration[5.1]
       t.string  :lecture,     :null => false
       t.string  :condition,   :null => false
       t.string  :discription, :null => false
-      t.boolean :sellout,     :null => false, default: true
+      t.boolean :sellout,     :null => false, default: false
       t.timestamps
     end
   end
