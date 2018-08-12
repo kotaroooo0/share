@@ -1,0 +1,12 @@
+.card
+  .card-body
+    p.card-text
+      = exhibition.price
+      | 円
+      p.mb-0 商品
+      = link_to exhibition.name, exhibition
+      p.mb-0 出品者
+      = link_to exhibition.user.name, exhibition.user
+      p.mb-0 状態
+      | #{exhibition.condition}
+      p.mt-3 #{time_ago_in_words(exhibition.created_at)}前

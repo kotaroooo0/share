@@ -1,0 +1,29 @@
+.mt-5
+  .row
+    .col-md-6.offset-md-3.bg-light.p-5
+      h3 商品を編集
+      = form_for @exhibition do |f|
+        = render 'shared/error_messages', object: f.object
+        .row
+          .col-md-12
+            .name-form
+              = f.label "名前"
+              span.badge.badge-danger 必須
+              = f.text_field :name, class: 'form-control', required: true
+            .lecture-form
+              = f.label "講義名"
+              span.badge.badge-danger 必須
+              = f.text_field :name, class: 'form-control', required: true
+            .condition-form
+              = f.label "状態"
+              span.badge.badge-danger 必須
+              = f.text_field :condition, class: 'form-control', required: true
+            .descrption-form.mt-2
+              = f.label "説明"
+              span.badge.badge-danger 必須
+              = f.text_area :discription, class: 'form-control', required: true
+        .submit-link
+          .text-center.mt-3
+            = f.hidden_field :user_id, value: current_user.id
+            = f.hidden_field :sellout, value: false
+            = f.submit "出品", class: "btn btn-success btn-block rounded-0"
