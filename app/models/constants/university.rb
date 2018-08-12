@@ -9,9 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+module Constants
+  class University < ApplicationRecord
+    belongs_to :user
 
-class University < ApplicationRecord
-  belongs_to :user
-
-  validates :name, presence: true, length: { maximum: 30 }
+    validates :name, presence: true, length: { maximum: 30 }
+  end
 end
