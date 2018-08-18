@@ -22,7 +22,6 @@ class ExhibitionsController < ApplicationController
   def create
     @exhibition = Exhibition.new(exhibition_params)
     flash[:success] = '出品しました' if @exhibition.save
-    logger.debug @exhibition.errors.inspect
     redirect_to root_path
   end
 
