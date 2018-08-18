@@ -14,7 +14,7 @@
 class Purchase < ApplicationRecord
   belongs_to :purchaser, class_name: 'User', foreign_key: 'purchaser_id'
   belongs_to :exhibition
-  has_one :good_evaluation, :normal_evaluation, :bad_evaluation
+  # has_one :good_evaluation, :normal_evaluation, :bad_evaluation
 
   validates :exhibition_id, presence: true
   validates :purchaser_id, presence: true

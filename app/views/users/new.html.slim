@@ -19,7 +19,7 @@
               = f.text_field :name, class: 'form-control', required: true, placeholder: @user.name
             .university-form.mt-2
               = f.label '大学'
-              = f.select :university_id, Constants::University.all.map{ |univ| [univ.name, univ.id] }, {prompt: '選択してください'}, class: 'form-control'
+              = f.select :university_id, University.all.map{ |univ| [univ.name, univ.id] }, {prompt: '選択してください'}, class: 'form-control'
             .grade-form.mt-2
               = f.label "学年"
               span.badge.badge-danger 必須

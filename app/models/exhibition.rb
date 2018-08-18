@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: exhibitions
@@ -11,7 +10,7 @@
 #  lecture     :string(255)      not null
 #  condition   :string(255)      not null
 #  discription :string(255)      not null
-#  sellout     :boolean          default(TRUE), not null
+#  sellout     :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -26,5 +25,5 @@ class Exhibition < ApplicationRecord
   validates :lecture, presence: true, length: { maximum: 30 }
   validates :condition, presence: true, length: { maximum: 100 }
   validates :discription, presence: true, length: { maximum: 256 }
-  validates :sellout, presence: true
+  validates :sellout, inclusion: {in: [true, false]}
 end

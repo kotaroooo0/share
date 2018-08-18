@@ -10,10 +10,14 @@
               = f.label "名前"
               span.badge.badge-danger 必須
               = f.text_field :name, class: 'form-control', required: true
+            .price-form
+              = f.label "価格"
+              span.badge.badge-danger 必須
+              = f.text_field :price, class: 'form-control', required: true
             .lecture-form
               = f.label "講義名"
               span.badge.badge-danger 必須
-              = f.text_field :name, class: 'form-control', required: true
+              = f.text_field :lecture, class: 'form-control', required: true
             .condition-form
               = f.label "状態"
               span.badge.badge-danger 必須
