@@ -18,9 +18,10 @@
 #
 
 class User < ApplicationRecord
-  has_one :university
   has_many :exhibitions
   has_many :purchases, class_name: 'Purchase', foreign_key: 'purchaser_id', dependent: :destroy
+
+  belongs_to :university
 
   validates :name, presence: true, length: { maximum: 15 }
   validates :grade, presence: true, length: { maximum: 10 }
