@@ -1,6 +1,34 @@
+# frozen_string_literal: true
+
+# 大学
+universitie_names = %w[京都大学 同志社大学 立命館大学]
+universitie_names.each { |name| University.create!(name: name) }
+
 # ユーザー
-(0..20).to_a.each{ |i| User.create!(name: "ユーザー#{i}", age: 20, sex: 0, email: "user#{i}@sample.com", password: 'password', password_confirmation: 'password', picture: 'user_picture.png') }
-# 商品
-(0..50).to_a.each{ |i| Item.create!(name: "商品#{i}", discription: "商品#{i}の説明。商品#{i}の説明。商品#{i}の説明。商品#{i}の説明。商品#{i}の説明。", picture: 'item_picture.png') }
-# 出品
-500.times { UserItem.create!(user_id: rand(20) + 1, item_id: rand(50) + 1, price: rand(10000), condition: "とても良い") }
+user_num = 6
+(1..user_num).to_a.each do |i|
+  User.create!(
+    name: "ユーザー#{i}",
+    grade: "#{i}回生",
+    university_id: 1,
+    sex: 0,
+    email: "user#{i}@sample.com",
+    image: 'user_picture.png',
+    introduction: 'introduction',
+    password: 'password',
+    password_confirmation: 'password'
+  )
+end
+
+# # 出品
+100.times do |i|
+  Exhibition.create!(
+    name:       "商品#{i}",
+    user_id: rand(1..user_num),
+    price: rand(10000),
+    lecture: "講義#{i}",
+    condition: 'condition',
+    discription: 'discription',
+    sellout: 'false'
+  )
+end

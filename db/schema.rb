@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180812073756) do
     t.string "lecture", null: false
     t.string "condition", null: false
     t.string "discription", null: false
-    t.boolean "sellout", default: true, null: false
+    t.boolean "sellout", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

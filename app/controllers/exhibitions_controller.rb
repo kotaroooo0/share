@@ -22,6 +22,7 @@ class ExhibitionsController < ApplicationController
   def create
     @exhibition = Exhibition.new(exhibition_params)
     flash[:success] = '出品しました' if @exhibition.save
+    logger.debug @exhibition.errors.inspect
     redirect_to root_path
   end
 
@@ -48,6 +49,6 @@ class ExhibitionsController < ApplicationController
   private
 
   def exhibition_params
-    params.require(:exhibition).permit(:name, :user_id, :price, :lecture, :condition, :discribe, :sellout)
+    params.require(:exhibition).permit(:name, :user_id, :price, :lecture, :condition, :discription, :sellout)
   end
 end
