@@ -35,3 +35,10 @@ ja:
       over_x_years:
         one: "1年以上"
         other: "%{count}年以上"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
