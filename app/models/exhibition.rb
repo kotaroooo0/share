@@ -18,6 +18,7 @@
 class Exhibition < ApplicationRecord
   belongs_to :user
   has_one :parchase
+  has_many :applies
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
