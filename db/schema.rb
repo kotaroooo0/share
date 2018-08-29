@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180825171232) do
+ActiveRecord::Schema.define(version: 20180826064128) do
 
   create_table "applies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id", null: false
-    t.integer "exhibition_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "exhibition_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["exhibition_id"], name: "index_applies_on_exhibition_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
   end
 
   create_table "bad_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180825171232) do
     t.boolean "sellout", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "apply_count", default: 0
   end
 
   create_table "good_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -75,4 +78,6 @@ ActiveRecord::Schema.define(version: 20180825171232) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "applies", "exhibitions"
+  add_foreign_key "applies", "users"
 end

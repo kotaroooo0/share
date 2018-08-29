@@ -18,7 +18,7 @@
 class Exhibition < ApplicationRecord
   belongs_to :user
   has_one :parchase
-  has_many :applies
+  has_many :applies, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
@@ -27,4 +27,9 @@ class Exhibition < ApplicationRecord
   validates :condition, presence: true, length: { maximum: 100 }
   validates :discription, presence: true, length: { maximum: 256 }
   validates :sellout, inclusion: {in: [true, false]}
+
+  # 応募しているユーザーかどうか
+  def apply_user?(user_id)
+    !applies.find_by(user_id: user_id).blank?
+  end
 end
