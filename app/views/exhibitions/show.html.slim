@@ -5,3 +5,11 @@
         = @exhibition.name
       span.card-text
         = @exhibition.discription
+      .option.m-2
+        span.apply-btn
+          = render :partial => "applies/apply", locals: {exhibition: @exhibition, applies: @applies}
+  - if @applies.present? && @exhibition.user == current_user
+    - @applies.each do |apply|
+      p
+        = apply.user_id
+        = link_to (fa_icon "user", text: '取引を行う' ), transactions_url(transaction: {user_id: current_user.id, exhibition_id: @exhibition.id}), method: :post
