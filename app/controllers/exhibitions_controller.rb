@@ -14,6 +14,7 @@ class ExhibitionsController < ApplicationController
 
   def show
     @exhibition = Exhibition.find(params[:id])
+    @applies = @exhibition.applies
   end
 
   def new
