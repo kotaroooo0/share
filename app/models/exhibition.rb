@@ -5,7 +5,7 @@
 #
 #  id          :bigint(8)        not null, primary key
 #  name        :string(255)      not null
-#  user_id     :string(255)      not null
+#  user_id     :integer          not null
 #  price       :integer          not null
 #  lecture     :string(255)      not null
 #  condition   :string(255)      not null
@@ -13,12 +13,14 @@
 #  sellout     :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  apply_count :integer          default(0)
 #
 
 class Exhibition < ApplicationRecord
   belongs_to :user
   has_one :parchase
   has_many :applies, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
