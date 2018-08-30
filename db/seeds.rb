@@ -20,15 +20,25 @@ user_num = 6
   )
 end
 
-# # 出品
+# 出品
 100.times do |i|
   Exhibition.create!(
     name:       "商品#{i}",
     user_id: rand(1..user_num),
-    price: rand(10000),
+    price: rand(10_000),
     lecture: "講義#{i}",
     condition: 'condition',
     discription: 'discription',
     sellout: 'false'
+  )
+end
+
+# 応募
+users = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2]
+exhibitions = [1, 1, 1, 2, 2, 3, 4, 4, 4, 5, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10]
+20.times do |i|
+  Apply.create!(
+    user_id: users[i],
+    exhibition_id: exhibitions[i]
   )
 end
