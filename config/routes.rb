@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :exhibitions, only: %i[index show new create edit update destroy] do
     resources :applies, only: %i[create destroy]
   end
-
+  resources :transactions, only: %i[show create destroy]
 
   get '/search',  to: 'exhibitions#search'
 
