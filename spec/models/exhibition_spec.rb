@@ -4,7 +4,7 @@
 #
 #  id          :bigint(8)        not null, primary key
 #  name        :string(255)      not null
-#  exhibition_id     :string(255)      not null
+#  user_id     :integer          not null
 #  price       :integer          not null
 #  lecture     :string(255)      not null
 #  condition   :string(255)      not null
@@ -12,6 +12,7 @@
 #  sellout     :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  apply_count :integer          default(0)
 #
 
 require 'rails_helper'

@@ -1,4 +1,4 @@
-.card
+.card id=("exhibition-#{exhibition.id}")
   .card-body
     p.card-text
       = exhibition.price
@@ -10,3 +10,6 @@
       p.mb-0 状態
       | #{exhibition.condition}
       p.mt-3 #{time_ago_in_words(exhibition.created_at)}前
+      .option.m-2
+        span.apply-btn
+          = render :partial => "applies/apply", locals: {exhibition: exhibition, applies: @applies}

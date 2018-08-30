@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180812073756) do
+ActiveRecord::Schema.define(version: 20180829155650) do
+
+  create_table "applies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "exhibition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibition_id"], name: "index_applies_on_exhibition_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
+  end
 
   create_table "bad_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "purchase_id", null: false
@@ -20,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180812073756) do
 
   create_table "exhibitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
-    t.string "user_id", null: false
+    t.integer "user_id", null: false
     t.integer "price", null: false
     t.string "lecture", null: false
     t.string "condition", null: false
@@ -28,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180812073756) do
     t.boolean "sellout", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "apply_count", default: 0
   end
 
   create_table "good_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -49,6 +59,15 @@ ActiveRecord::Schema.define(version: 20180812073756) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "exhibition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibition_id"], name: "index_transactions_on_exhibition_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
   create_table "universities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -68,4 +87,8 @@ ActiveRecord::Schema.define(version: 20180812073756) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "applies", "exhibitions"
+  add_foreign_key "applies", "users"
+  add_foreign_key "transactions", "exhibitions"
+  add_foreign_key "transactions", "users"
 end

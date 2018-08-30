@@ -1,0 +1,1 @@
+$("#exhibition-<%= @exhibition.id %> .apply-btn").html("<%= j(render :partial => 'applies/apply', locals: {exhibition: @exhibition, applies: @applies}) %>");

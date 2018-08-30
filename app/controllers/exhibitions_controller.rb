@@ -2,6 +2,7 @@
 
 class ExhibitionsController < ApplicationController
   before_action :logged_in_user?, only: %i[new create edit update destroy]
+  before_action :correct_user?, only: %i[new create edit update destroy]
 
   def index
     @exhibitions = Exhibition.order('created_at DESC').limit(9).includes(:user)
@@ -13,6 +14,7 @@ class ExhibitionsController < ApplicationController
 
   def show
     @exhibition = Exhibition.find(params[:id])
+    @applies = @exhibition.applies
   end
 
   def new
