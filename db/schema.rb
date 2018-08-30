@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180826064128) do
+ActiveRecord::Schema.define(version: 20180829155650) do
 
   create_table "applies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id", null: false
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20180826064128) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "exhibition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibition_id"], name: "index_transactions_on_exhibition_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
   create_table "universities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -80,4 +89,6 @@ ActiveRecord::Schema.define(version: 20180826064128) do
 
   add_foreign_key "applies", "exhibitions"
   add_foreign_key "applies", "users"
+  add_foreign_key "transactions", "exhibitions"
+  add_foreign_key "transactions", "users"
 end
