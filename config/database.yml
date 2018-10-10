@@ -5,7 +5,6 @@ development:
   database: share_devel
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  # password: password
   password: <%= ENV['DEVEL_DB_PASS'] %>
   host: localhost
   timeout: 5000
@@ -16,7 +15,6 @@ test:
   reconnect: false
   database: share_test
   username: root
-  # password: password
   password: <%= ENV['TEST_DB_PASS'] %>
   host: localhost
 
