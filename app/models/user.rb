@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :exhibitions
   has_many :purchases, class_name: 'Purchase', foreign_key: 'purchaser_id', dependent: :destroy
   has_many :applies, dependent: :destroy
-  has_many :transactions, dependent: :destroy
+  has_many :trades, dependent: :destroy
 
   belongs_to :university
 
