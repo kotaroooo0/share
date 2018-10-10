@@ -42,3 +42,22 @@ exhibitions = [1, 1, 1, 2, 2, 3, 4, 4, 4, 5, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10]
     exhibition_id: exhibitions[i]
   )
 end
+
+# 取引
+Exhibition.all.each do |exhibition|
+  applies = exhibition.applies
+  next if applies.count == 0
+  Trade.create!(
+    is_chating: true,
+    user_id: applies.sample.user.id,
+    exhibition_id: exhibition.id
+  )
+end
+
+# チャット
+Trade.all.each do |trade|
+  ChatRoom.create!(
+    is_running: true,
+    trade_id: trade.id
+  )
+end

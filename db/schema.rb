@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180829155650) do
+ActiveRecord::Schema.define(version: 20181004160013) do
 
   create_table "applies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id", null: false
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20180829155650) do
     t.integer "purchase_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean "is_running", default: true
+    t.bigint "trade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trade_id"], name: "index_chat_rooms_on_trade_id"
   end
 
   create_table "exhibitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,6 +54,16 @@ ActiveRecord::Schema.define(version: 20180829155650) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "normal_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "purchase_id", null: false
     t.datetime "created_at", null: false
@@ -59,13 +77,14 @@ ActiveRecord::Schema.define(version: 20180829155650) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "trades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean "is_chating", default: true
     t.bigint "user_id", null: false
     t.bigint "exhibition_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exhibition_id"], name: "index_transactions_on_exhibition_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["exhibition_id"], name: "index_trades_on_exhibition_id"
+    t.index ["user_id"], name: "index_trades_on_user_id"
   end
 
   create_table "universities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -89,6 +108,6 @@ ActiveRecord::Schema.define(version: 20180829155650) do
 
   add_foreign_key "applies", "exhibitions"
   add_foreign_key "applies", "users"
-  add_foreign_key "transactions", "exhibitions"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "trades", "exhibitions"
+  add_foreign_key "trades", "users"
 end
