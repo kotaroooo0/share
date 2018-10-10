@@ -12,4 +12,4 @@
     - @applies.each do |apply|
       p
         = apply.user_id
-        = link_to (fa_icon "user", text: '取引を行う' ), transactions_url(transaction: {user_id: current_user.id, exhibition_id: @exhibition.id}), method: :post
+        = link_to (fa_icon "user", text: '取引を行う' ), trades_url(trade: {user_id: current_user.id, exhibition_id: @exhibition.id}), method: :post

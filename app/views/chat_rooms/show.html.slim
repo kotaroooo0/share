@@ -1,0 +1,8 @@
+h2 チャットルーム
+ul#messages
+  = render :partial => "chat_rooms/message", :collection => @messages
+
+form
+  label Say something:
+  br/
+  input data-behavior="chat_room_speaker" type="text" /
