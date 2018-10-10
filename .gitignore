@@ -27,3 +27,6 @@
 
 # venderは不要
 /vendor/*
+
+/Gemfile.lock
+/.vagrant
